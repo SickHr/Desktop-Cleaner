@@ -2,6 +2,7 @@ import os
 import shutil
 import time
 
+
 def clean_desktop():
     desktop_path = os.path.expanduser("~/Desktop")
     new_folder_path = os.path.join(desktop_path, "Organized")
@@ -16,8 +17,11 @@ def clean_desktop():
         "jpeg": "Bilder",
         "png": "Bilder",
         "gif": "Bilder",
+        "webp": "Bilder",
         "txt": "Dokumente",
         "pdf": "Dokumente",
+        "doc": "Dokumente",
+        "docx": "Dokumente",
         "mp4": "Anwendungen",
         "mp3": "Anwendungen",
         "wav": "Anwendungen",
@@ -38,7 +42,8 @@ def clean_desktop():
                 continue
 
             # Überprüfe die Dateiendung und erhalte den zugehörigen Ordner
-            file_extension = filename.split(".")[-1]
+            _, file_extension = os.path.splitext(filename)
+            file_extension = file_extension[1:]  # Entfernt den Punkt am Anfang
             destination_folder = os.path.join(new_folder_path, extension_categories.get(file_extension, "Allgemein"))
 
             # Verschiebe die Datei in den entsprechenden Ordner
@@ -46,10 +51,9 @@ def clean_desktop():
                 os.makedirs(destination_folder)
 
             shutil.move(file_path, os.path.join(destination_folder, filename))
-            print(f"Die Datei {filename} wurde in den Ordner {destination_folder} verschoben.")
-
         # Warte für eine gewisse Zeit, bevor der nächste Durchlauf erfolgt (z.B., alle 60 Sekunden)
-        time.sleep(30)
+        time.sleep(60)
+
 
 # Rufe die Funktion auf
 clean_desktop()
