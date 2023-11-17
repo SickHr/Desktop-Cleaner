@@ -30,6 +30,7 @@ def clean_desktop():
         "exe": "Anwendungen",
         "msi": "Anwendungen",
         "iso": "Anwendungen"
+
     }
 
     while True:
