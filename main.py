@@ -53,7 +53,7 @@ def clean_desktop():
 
             shutil.move(file_path, os.path.join(destination_folder, filename))
         # Warte für eine gewisse Zeit, bevor der nächste Durchlauf erfolgt (z.B., alle 60 Sekunden)
-        time.sleep(60)
+        time.sleep(30)
 
 
 # Rufe die Funktion auf
